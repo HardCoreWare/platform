@@ -6,11 +6,33 @@ use App\Interfaces\FileManagerInterface;
 
 class FileManager{
 
+    private static $INSTANCE;
+
+    //funcion estatica de istancia
+    public static function INSTANCIATE(){
+
+        if (!self::$INSTANCE instanceof self){
+
+        self::$INSTANCE = new self();
+
+        }
+
+        return self::$INSTANCE;
+        
+    }
+
+    //constructor privado
+    private function __construct(){
+
+
+
+    }
+
     //escaneamos archivo
     public function getFiles($folder,$date){
 
         //obtenemos archivos crudos
-        $files=scandir('../files/'.$folder);
+        $files=scandir('../files/schemas/'.$folder);
         $filesNames=[];
 
         foreach ($files as $file) {
