@@ -56,7 +56,7 @@ class FileManager{
     //obtenemos esquema
     public function getSchema($schemaFile){
 
-        $jsonFile=file_get_contents('../schema/'.$schemaFile.".json");
+        $jsonFile=file_get_contents('../files/schemas/'.$schemaFile.".json");
         $schema=json_decode($jsonFile,true);
         return $schema;
 

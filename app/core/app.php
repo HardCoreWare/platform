@@ -16,7 +16,7 @@ $container=$app->getContainer();
 
 $container['loader']=function ($container) {
 
-    return new App\Composites\Loader(App\Modules\BigLoader::INSTANCIATE('informe-211921'), new App\Modules\FileManager());
+    return new App\Composites\Loader(App\Modules\BigLoader::INSTANCIATE('informe-211921'), App\Modules\FileManager::INSTANCIATE());
 
 };
 
@@ -25,7 +25,6 @@ $container['loader']=function ($container) {
 $app->get('/hello', function (Request $request, Response $response, array $args) {
 
     $response->getBody()->write("Hello");
-    $test=$this['test'];
     return $response;
 
 });
