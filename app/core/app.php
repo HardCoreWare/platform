@@ -20,5 +20,6 @@ $container['loader']=function ($container) {
 
 };
 
+//rutas de carga via bigquery
 $app->get('/load/local/schema/{schema}/date/{date}', '\App\Controllers\LoadController:loadLocal');
 $app->run();
