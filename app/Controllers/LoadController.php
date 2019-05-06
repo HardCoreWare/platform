@@ -10,21 +10,10 @@ class LoadController extends Controller{
         $date = $args['date'];
         $bigLoader=$this->c['loader'];
         $bigLoader->loadTable($schema,$date);
-        $response->getBody()->write("success");
+        $response->getBody()->write(json_encode(["status"=>"success"]));
 
     }
 
-    public function loadStorage($request,$response,$args){
-
-
-
-    }
-
-    public function upload($request,$response,$args){
-
-
-
-    }
 }
 
 ?>
