@@ -29,7 +29,6 @@ class Loader{
 
         //obtenemos el esquema de tabla
         $this->schema=$this->fileManager->getSchema($type);
-        print_r($this->schema);
 
         //obtenemos los archivos
         //$files=$this->fileManager->getFiles($type,$date);

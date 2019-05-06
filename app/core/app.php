@@ -20,15 +20,5 @@ $container['loader']=function ($container) {
 
 };
 
-// Define app routes
-
-$app->get('/hello', function (Request $request, Response $response, array $args) {
-
-    $response->getBody()->write("Hello");
-    return $response;
-
-});
-
-$app->get('/load/file', '\App\Controllers\LoadController:loadFile');
-
+$app->get('/load/local/schema/{schema}/date/{date}', '\App\Controllers\LoadController:loadLocal');
 $app->run();
