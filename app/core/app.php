@@ -20,6 +20,18 @@ $container['loader']=function ($container) {
 
 };
 
+//root
+$app->get('/', function (Request $request, Response $response, array $args) {
+
+    $response->getBody()->write("plataforma GCP");
+    return $response;
+
+});
+
 //rutas de carga via bigquery
+//requiere BigLoader
+//requiere FileManager
+//archivos esquema json
+//pools de tablas .csv
 $app->get('/load/local/schema/{schema}/date/{date}', '\App\Controllers\LoadController:loadLocal');
 $app->run();
