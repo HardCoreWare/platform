@@ -3,6 +3,7 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
+
 $app = new \Slim\App(
     [
         'settings' => [
@@ -14,9 +15,19 @@ $app = new \Slim\App(
 
 $container=$app->getContainer();
 
-$container['loader']=function ($container) {
+$container['finder']=function($container){
 
-    return new App\Composites\Loader(App\Modules\BigLoader::INSTANCIATE('informe-211921'), App\Modules\FileManager::INSTANCIATE());
+    return new App\Modules\Finder();
+
+};
+
+$container['proxy']=function ($container) {
+
+    return function($params){
+
+        return new App\Modules\Proxy(new GuzzleHttp\Client($params));
+
+    };
 
 };
 
@@ -28,10 +39,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 });
 
-//rutas de carga via bigquery
-//requiere BigLoader
-//requiere FileManager
-//archivos esquema json
-//pools de tablas .csv
-$app->get('/load/local/schema/{schema}/date/{date}', '\App\Controllers\LoadController:loadLocal');
+//rutas del proxy
+$app->get('/{base}[/{body:.*}]', '\App\Controllers\ProxyController:get');
 $app->run();
