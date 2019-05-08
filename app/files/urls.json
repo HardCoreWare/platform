@@ -11,12 +11,14 @@
 
     },
     
-    "balanza" : {
+    "contables" : {
 
         "settings":
             
             {
-                "base_uri" : "https://34.73.53.135"
+
+                "base_uri" : "http://35.231.115.38/"
+                
             }
 
     }
